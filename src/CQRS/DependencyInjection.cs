@@ -30,8 +30,8 @@ namespace CQRS
 
         public static IServiceCollection AddQuery(this IServiceCollection services, params Assembly[] assemblies)
         {
-            // Register the dispatcher
-            services.AddScoped<IDispatcher, Dispatcher>();
+            // Register the query dispatcher
+            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
 
             // Register handlers from assemblies
             if (assemblies.Length == 0)
@@ -47,8 +47,8 @@ namespace CQRS
 
         public static IServiceCollection AddCommand(this IServiceCollection services, params Assembly[] assemblies)
         {
-            // Register the dispatcher
-            services.AddScoped<IDispatcher, Dispatcher>();
+            // Register the command dispatcher
+            services.AddScoped<ICommandDispatcher, CommandDispatcher>();
 
             // Register handlers from assemblies
             if (assemblies.Length == 0)
